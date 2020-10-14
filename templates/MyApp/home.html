@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>HomePage_CRUD_OPERATIONS</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    </head>
+    <body>
+    <h1><a href="{% url 'home' %}" class="top-menu"> Companies List </a></h1>
+   <a href="/create/" class="top-menu">AddNewPic</a><br>
+     <ul>
+         {% for obj in orglist %}
+<a href="/retrive/{{ obj.id }}"><h3>{{ obj.id }}.{{ obj.company_name }} </h3>
+{% if obj.company_logo %} <img src='{{obj.company_logo.url}}'/>
+{% endif %} </a> <br/>
+         <a href="{% url 'update' id=obj.id  %} ">Update</a>
+         <a href="{% url 'delete' id=obj.id  %} ">Delete</a>
+        {% endfor %}
+     </ul>
+     </body>
+</html>
